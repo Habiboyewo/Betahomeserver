@@ -9,7 +9,7 @@ const authentication = (req, res, next) => {
 
     const token = authHeader.split(" ")[1];
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    request.user = { userId: payload.userId, role: payload.role };
+    req.user = { userId: payload.userId, role: payload.role };
     next();
   } catch (error) {
     console.log(error);
