@@ -22,12 +22,19 @@ const inspectionSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    inspectionDate: {
+      type: Date,
+      required: true,
+    },
+    inspectionTime: {
+      type: String,
+      required: true,
+    },
     message: {
       type: String,
     },
   },
-  { timestamps: true }
+  { timestamps: true }
 );
 
-
-module.exports = mongoose.model("Inspection", inspectionSchema)
+module.exports = mongoose.model("Inspection", inspectionSchema);
