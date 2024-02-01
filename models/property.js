@@ -3,19 +3,19 @@ const Schema = mongoose.Schema;
 
 const managerSchema = new Schema({
   name: {
-    type: "Strings",
+    type: String,
     required: true,
   },
   phoneNumber: {
-    type: "Strings",
+    type: String,
     required: true,
   },
   whatsappNumber: {
-    type: "Strings",
+    type: String,
     required: true,
   },
   avatar: {
-    type: "Strings",
+    type: String,
     default:
       "https://static-00.iconduck.com/assets.00/avatar-default-symbolic-icon-479x512-n8sg74wg.png",
   },
