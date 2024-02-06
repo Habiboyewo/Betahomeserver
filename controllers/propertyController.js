@@ -94,7 +94,7 @@ const handleGetAllProperties = async (req, res) => {
     queryObject.location = { $regex: location, $options: "i" };
   }
   if (type) {
-    queryObject.propertyType = { $regex: location, $options: "i" };
+    queryObject.propertyType = { $regex: type, $options: "i" };
   }
   if (bedroom) {
     queryObject.bedroom = { $eq: Number(bedroom) };
@@ -256,6 +256,20 @@ const handleDeleteProperty = async (req, res) => {
   }
 };
 
+const handleFeaturedProperties = async (req, res) => {
+  try {
+    const housedProperties = await Property.find({ propertyType: "house" }).limit(3);
+    const landProperties = await Property.find({ propertyType: "Land" }).limit(3);
+
+    const featuredProperties = [...housedProperties, ...landProperties,];
+    
+    res.status(200).json({ success: true, featuredProperties });
+  } catch (error) {
+    console.log(error);
+    res.json(error);
+  }
+};
+
 module.exports = {
   handleAddProperty,
   handleGetAllProperties,
@@ -263,4 +277,5 @@ module.exports = {
   handleEditProperty,
   handleDeleteProperty,
   handleGetRecentProperties,
+  handleFeaturedProperties,
 };

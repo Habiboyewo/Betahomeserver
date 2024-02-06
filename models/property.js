@@ -71,7 +71,7 @@ const propertySchema = new Schema(
       min: 0,
     },
     media: {
-      image: {
+      images: {
         type: [String],
       },
       video: {
